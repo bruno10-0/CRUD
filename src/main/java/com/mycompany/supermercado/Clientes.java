@@ -88,10 +88,6 @@ public class Clientes extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.println("Error al eliminar el registro: " + idRegistro);
                 }
-                //actualizarTabla();
-                this.dispose();
-                new Clientes().setVisible(true);
-
             }
         }
 
@@ -299,12 +295,12 @@ public class Clientes extends javax.swing.JFrame {
     private void borrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_borrarMouseClicked
         eliminarFilasSeleccionadas(tabla);
         new Clientes().setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_borrarMouseClicked
 
     private void subirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subirMouseClicked
         new Subir(1).setVisible(true);
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_subirMouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -312,10 +308,10 @@ public class Clientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
-       String entrada = JOptionPane.showInputDialog(null, "Indice de la fila a modificar:", "Indice", JOptionPane.PLAIN_MESSAGE);
+        String entrada = JOptionPane.showInputDialog(null, "Indice de la fila a modificar:", "Indice", JOptionPane.PLAIN_MESSAGE);
         try {
             int numeroFila = Integer.parseInt(entrada);
-            new Subir(2,numeroFila,mapa.get(numeroFila)).setVisible(true);
+            new Subir(2, numeroFila, mapa.get(numeroFila)).setVisible(true);
             dispose();
         } catch (Exception e) {
             System.out.println("Error al leer el indice ingresado. " + e.getMessage());

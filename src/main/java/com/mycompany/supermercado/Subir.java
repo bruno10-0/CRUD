@@ -34,7 +34,7 @@ public class Subir extends javax.swing.JFrame {
         titulo.setText("Estas modificando datos...");
         datoModificar();
     }
- 
+
     private void datoModificar() {
         txt_nombre.setText(documento.getString("nombre"));
         txt_direccion.setText(documento.getString("direccion"));
@@ -241,7 +241,7 @@ public class Subir extends javax.swing.JFrame {
     private void listoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listoMouseClicked
         if (modalidad == 1) {
             guardarDatosEnMongoDB(txt_nombre, txt_direccion, txt_celular);
-        } else if(modalidad==2) {
+        } else if (modalidad == 2) {
             MongoCollection colecciones = new ConexionMongo().crearConexion().getDatabase("SUPERmercadoMayorista").getCollection("Clientes");
             subirModificaciones(colecciones);
         }
@@ -259,14 +259,16 @@ public class Subir extends javax.swing.JFrame {
         ImageIcon nuevoIcono = new ImageIcon(rutaIcono);
         label.setIcon(nuevoIcono);
     }
-    
+
     private void subirModificaciones(MongoCollection<Document> collection) {
         Object id = documento.get("_id");
         Document filtro = new Document("_id", id);
-        Document nuevoValor = new Document("$set", new Document("nombre", txt_nombre)
-                                            .append("direccion", txt_direccion)
-                                            .append("telefono", txt_celular));
+        Document nuevoValor = new Document("$set", new Document("nombre", txt_nombre.getText())
+                .append("direccion", txt_direccion.getText())
+                .append("telefono", txt_celular.getText()));
         collection.updateOne(filtro, nuevoValor);
+        new Clientes().setVisible(true);
+        this.dispose();
 
     }
 
@@ -291,8 +293,8 @@ public class Subir extends javax.swing.JFrame {
             } catch (MongoException e) {
                 JOptionPane.showMessageDialog(null, "Error al intentar guardar los datos en Mongo, Codigo de error: " + e.toString());
             }
-            dispose();
             new Clientes().setVisible(true);
+            this.dispose();
         }
     }
 
