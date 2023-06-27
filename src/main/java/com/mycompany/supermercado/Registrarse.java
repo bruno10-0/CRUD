@@ -1,11 +1,12 @@
 package com.mycompany.supermercado;
 
 import java.awt.Color;
+import java.text.BreakIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
- 
+
 public class Registrarse extends javax.swing.JFrame {
 
     //La variable direccion guarda la ruta principal de un directorio en Windows.
@@ -324,34 +325,36 @@ public class Registrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_temaMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        boolean registro = true;
         if (txtCorreo.getText().isEmpty() || txtNomUsuario.getText().isEmpty() || txtPass.getText().isEmpty() || txtPass1.getText().isEmpty()) {
             aviso.setText("Complete todos los campos");
-            registro = false;
+            return;
         }
+
         char[] password1 = txtPass.getPassword();
-        char[] password2 = txtPass.getPassword();
+        char[] password2 = txtPass1.getPassword();
 
         if (password1.length != password2.length) {
-            registro = false;
-        } else {
-            for (int i = 0; i < password1.length; i++) {
-                if (password1[i] != password2[i]) {
-                    registro = false;
-                    break;
-                }
-            }
-            String patron = "[aA-zZ]@(?:hotmail|outlook|gmail)\\.com";
-            Pattern pattern = Pattern.compile(patron);
-            Matcher matcher = pattern.matcher(txtCorreo.getText());
-            if (!matcher.find()) {
-                aviso.setText("Ingrese un correo electronico válido.");
-                registro = false;
-            }
-            if (registro) {
-                aviso.setText("exito");
+            aviso.setText("Las contraseñas no coinciden");
+            return;
+        }
+
+        for (int i = 0; i < password1.length; i++) {
+            if (password1[i] != password2[i]) {
+                aviso.setText("Las contraseñas no coinciden");
+                return;
             }
         }
+
+        String patron = "[aA-zZ]@(?:hotmail|outlook|gmail)\\.com";
+        Pattern pattern = Pattern.compile(patron);
+        Matcher matcher = pattern.matcher(txtCorreo.getText());
+        if (!matcher.find()) {
+            aviso.setText("Ingrese un correo electrónico válido.");
+            return;
+        }
+
+        aviso.setText("éxito");
+
     }//GEN-LAST:event_jButton1MouseClicked
     private void cambiarIcono(String rutaIcono, JLabel label) {
         ImageIcon nuevoIcono = new ImageIcon(rutaIcono);

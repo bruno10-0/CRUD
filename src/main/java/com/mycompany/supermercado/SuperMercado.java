@@ -5,6 +5,6 @@ package com.mycompany.supermercado;
 public class SuperMercado {
 
     public static void main(String[] args) {
-        new Clientes().setVisible(true);
+        new Login().setVisible(true);
     }
 }

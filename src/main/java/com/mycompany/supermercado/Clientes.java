@@ -104,6 +104,7 @@ public class Clientes extends javax.swing.JFrame {
         atras = new javax.swing.JLabel();
         cerrar = new javax.swing.JLabel();
         minimar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         ScrollPane = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -160,6 +161,12 @@ public class Clientes extends javax.swing.JFrame {
         });
         nav.add(minimar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 30, 30));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\SuperMercado\\src\\main\\java\\com\\mycompany\\resources\\Imagenes\\usuario_negro 24px.png")); // NOI18N
+        jLabel1.setText("Clientes");
+        nav.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 100, 30));
+
         getContentPane().add(nav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 30));
 
         ScrollPane.setBackground(new java.awt.Color(255, 255, 255));
@@ -182,7 +189,7 @@ public class Clientes extends javax.swing.JFrame {
                 java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, true, true, true
+                true, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -245,7 +252,7 @@ public class Clientes extends javax.swing.JFrame {
                 subirMouseClicked(evt);
             }
         });
-        jPanel1.add(subir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 90, 40));
+        jPanel1.add(subir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 80, 40));
 
         editar.setForeground(new java.awt.Color(0, 0, 0));
         editar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bruno\\Documents\\NetBeansProjects\\SuperMercado\\src\\main\\java\\com\\mycompany\\resources\\Imagenes\\editar.png")); // NOI18N
@@ -332,6 +339,7 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JLabel borrar;
     private javax.swing.JLabel cerrar;
     private javax.swing.JLabel editar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
