@@ -14,7 +14,6 @@ public class Subir extends javax.swing.JFrame {
     String direccion = "C:\\Users\\Bruno\\Documents\\NetBeansProjects\\";
     int modalidad = 0;
     Document documento;
-    int indice;
 
     public Subir(int modalidad) {
         this.modalidad = modalidad;
@@ -26,7 +25,7 @@ public class Subir extends javax.swing.JFrame {
 
     public Subir(int modalidad, int indice, Document documento) {
         this.modalidad = modalidad;
-        this.indice = indice;
+        //this.indice = indice;
         this.documento = documento;
         initComponents();
         this.setLocationRelativeTo(null);

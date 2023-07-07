@@ -283,7 +283,7 @@ public class Login extends javax.swing.JFrame {
             Iniciarsesion iniciar = new Iniciarsesion();
             boolean a;
             a = iniciar.Entrar(textoIngresado, txtNomUsu.getText());
-            Menu menu = new Menu();
+            Menu menu = new Menu(txtNomUsu);
             if (a == true) {
                 menu.setVisible(true);
                 dispose();

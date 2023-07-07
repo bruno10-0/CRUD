@@ -4,15 +4,21 @@ import java.awt.Color;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class Menu extends javax.swing.JFrame {
 
     String direccion = "C:\\Users\\Bruno\\Documents\\NetBeansProjects\\";
     boolean Modo = false;
-
-    public Menu() {
+   public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
+        saludo.setText("Esta muy bueno, verdad? :D");
+    }
+    public Menu(JTextField usuario) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        saludo.setText("Hola "+usuario.getText()+", bienvenido!");
     }
 
     @SuppressWarnings("unchecked")
@@ -24,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         minimizar = new javax.swing.JLabel();
         tema = new javax.swing.JLabel();
         cerrar = new javax.swing.JLabel();
+        INICIO = new javax.swing.JLabel();
         img_clientes = new javax.swing.JLabel();
         txt_clientes = new javax.swing.JLabel();
         img_empleados = new javax.swing.JLabel();
@@ -42,7 +49,7 @@ public class Menu extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        INICIO = new javax.swing.JLabel();
+        saludo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -88,6 +95,12 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         nav.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 30, 30));
+
+        INICIO.setBackground(new java.awt.Color(0, 0, 0));
+        INICIO.setFont(new java.awt.Font("Segoe UI Historic", 0, 18)); // NOI18N
+        INICIO.setForeground(new java.awt.Color(0, 0, 0));
+        INICIO.setText("INICIO");
+        nav.add(INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 60, -1));
 
         Body.add(nav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 30));
 
@@ -230,11 +243,10 @@ public class Menu extends javax.swing.JFrame {
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
         Body.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 120, 10));
 
-        INICIO.setBackground(new java.awt.Color(0, 0, 0));
-        INICIO.setFont(new java.awt.Font("Segoe UI Historic", 0, 18)); // NOI18N
-        INICIO.setForeground(new java.awt.Color(0, 0, 0));
-        INICIO.setText("INICIO");
-        Body.add(INICIO, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 60, -1));
+        saludo.setBackground(new java.awt.Color(0, 0, 0));
+        saludo.setFont(new java.awt.Font("Segoe UI Historic", 0, 18)); // NOI18N
+        saludo.setForeground(new java.awt.Color(0, 0, 0));
+        Body.add(saludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 430, 30));
 
         getContentPane().add(Body, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 450));
 
@@ -423,6 +435,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel minimizar;
     private javax.swing.JPanel nav;
+    private javax.swing.JLabel saludo;
     private javax.swing.JLabel tema;
     private javax.swing.JLabel txt_clientes;
     private javax.swing.JLabel txt_empleados;

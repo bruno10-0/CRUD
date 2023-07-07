@@ -1,11 +1,17 @@
 package com.mycompany.supermercado;
 
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
 import java.awt.Color;
 import java.text.BreakIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import org.bson.Document;
 
 public class Registrarse extends javax.swing.JFrame {
 
@@ -348,13 +354,14 @@ public class Registrarse extends javax.swing.JFrame {
         String patron = "[aA-zZ]@(?:hotmail|outlook|gmail)\\.com";
         Pattern pattern = Pattern.compile(patron);
         Matcher matcher = pattern.matcher(txtCorreo.getText());
+        System.out.println(matcher);
         if (!matcher.find()) {
             aviso.setText("Ingrese un correo electrónico válido.");
             return;
         }
 
         aviso.setText("éxito");
-
+        subirUsuario(txtPass, txtNomUsuario, txtCorreo);
     }//GEN-LAST:event_jButton1MouseClicked
     private void cambiarIcono(String rutaIcono, JLabel label) {
         ImageIcon nuevoIcono = new ImageIcon(rutaIcono);
@@ -363,6 +370,25 @@ public class Registrarse extends javax.swing.JFrame {
 
     public void Cambiartema() {
         Modo = !Modo;
+    }
+
+    private void subirUsuario(JPasswordField contraseña, JTextField usuario, JTextField correo) {
+        try {
+            MongoCollection<Document> collection = new ConexionMongo().crearConexion().getDatabase("SUPERmercadoMayorista").getCollection("Usuarios");
+            //creamo el documento a guardar.
+            Document documentoGuardar = new Document()
+                    .append("contrasenia", contraseña.getText())
+                    .append("usuario", usuario.getText())
+                    .append("correo", correo.getText());
+
+            // Inserción del documento en la colección
+            collection.insertOne(documentoGuardar);
+            JOptionPane.showMessageDialog(null, "EXITO: Se creo el usuario.");
+        } catch (MongoException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: Al intentar cargar el usuario en Mongo");
+            System.out.println("Codigo de error:" + e.toString());
+        }
+        new Login().setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
